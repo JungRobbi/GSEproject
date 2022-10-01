@@ -62,7 +62,8 @@ int main(int argc, char **argv)
 		std::cout << "GLEW 3.0 not supported\n ";
 	}
 
-	g_game = new GSEGame{ 500, 500 };
+	GSEVec2 temp = { 500.f, 500.f };
+	g_game = new GSEGame{ temp };
 
 	glutDisplayFunc(RenderScene);
 	glutIdleFunc(Idle);
