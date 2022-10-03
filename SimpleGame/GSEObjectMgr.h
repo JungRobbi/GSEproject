@@ -11,7 +11,7 @@ public:
 	~GSEObjectMgr();
 
 	bool AddObject(GSEVec3 pos, GSEVec3 size);
-	GSEObject* GetObject(int index);
+	GSEObject GetObject(int index);
 	bool DeleteObject(int index);
 	int FindEmptySlot();
 };

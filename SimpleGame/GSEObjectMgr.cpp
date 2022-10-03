@@ -28,11 +28,17 @@ bool GSEObjectMgr::AddObject(GSEVec3 pos, GSEVec3 size)
 	return true;
 }
 
-GSEObject* GSEObjectMgr::GetObject(int index)
+GSEObject GSEObjectMgr::GetObject(int index)
 {
-	if (!m_objects[index])
-		return m_objects[index];
-	return NULL;
+	GSEVec3 pos{ 0, 0, 0 };
+	GSEVec3 size{ 0, 0, 0 };
+	GSEObject temp = GSEObject(pos, size);
+	if (m_objects[index] != NULL)
+		memcpy(&temp, m_objects[index], sizeof(GSEObject));
+	else {
+		//log
+	}
+	return temp;
 }
 
 bool GSEObjectMgr::DeleteObject(int index)
@@ -48,7 +54,7 @@ bool GSEObjectMgr::DeleteObject(int index)
 int GSEObjectMgr::FindEmptySlot()
 {
 	for (int i{}; i < MAX_OBJECT_COUNT; ++i) {
-		if (!m_objects[i]) 
+		if (m_objects[i] == NULL) 
 			return i;
 	}
 
